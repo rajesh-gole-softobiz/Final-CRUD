@@ -16,8 +16,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 // import { deleteUser, fetchUsers } from "../../redux/UserSlice";
 import { Pagination } from "@mui/material";
-import { fetchUsers } from "../../redux/modules/users";
-import { AppDispatch, RootState } from "../../redux/configureStore";
+import { deleteUser, fetchUsers } from "../../redux/modules/users";
+import {
+  AppDispatch,
+  RootState,
+  useAppDispatch,
+} from "../../redux/configureStore";
 
 const UserView = () => {
   const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -40,13 +44,11 @@ const UserView = () => {
     },
   }));
 
-  //  const users = useSelector((state) => state.usersReducer.users);
-  //  console.log("users", users);
   //   const [users, setUsers] = useState([]);
   const [noOfUsers, setNoOfUsers] = useState(0);
   const [rows, setRows] = useState([]);
   const [searched, setSearched] = useState("");
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [pageSize, setPageSize] = useState(4);
   const [page, setPage] = useState(1);
@@ -54,15 +56,14 @@ const UserView = () => {
 
   //
   const { users } = useSelector((state: RootState) => ({
-    users: state.users,
+    users: state.users.users,
   }));
-
   const handlePage = (page: any) => setPage(page);
   useEffect(() => {
     dispatch(fetchUsers());
-    // setRows([...rows, ...user]);
+    setRows([...rows, ...users]);
     // setUsers([...users, ...user]);
-    // setNoOfUsers(Object.keys(user.data).length);
+    setNoOfUsers(Object.keys(users).length);
   }, [dispatch]);
 
   //   const handleDeleteUser = (id: any) => {
@@ -77,6 +78,11 @@ const UserView = () => {
   //     // dispatch(deleteUser(id));
   //     // navigate("/all-users");
   //   };
+  const handleDeleteUser = (id: any) => {
+    dispatch(deleteUser(id));
+    alert("User Deleted");
+    navigate("/all-users");
+  };
   const totalPages = Math.ceil(rows.length / pageSize);
   let copyData = rows.slice((page - 1) * pageSize, page * pageSize);
 
@@ -151,6 +157,17 @@ const UserView = () => {
                         to={`/edituser/${user["id"]}`}
                       >
                         Edit
+                      </Button>
+                      <Button
+                        variant="contained"
+                        component={Link}
+                        to={`/all-users`}
+                        color="error"
+                        onClick={() => {
+                          handleDeleteUser(user["id"]);
+                        }}
+                      >
+                        Delete
                       </Button>
                       {/* <Button
                         variant="outlined"

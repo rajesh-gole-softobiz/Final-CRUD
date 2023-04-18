@@ -1,7 +1,7 @@
 import axios from "axios";
-
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const { get } = require("superagent");
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+// const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 // const { createAsyncThunk } = require("@reduxjs/toolkit");
 // const { axios } = require("axios");
 
@@ -12,7 +12,7 @@ const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
 // import { get } from 'superagent'
 
 //View User
-export const fetchUsers = createAsyncThunk("users/fetchUsers", async (data: any) => {
+export const fetchUsers = createAsyncThunk("users/fetchUsers", async () => {
   const response:any = await get("http://localhost:3009/users");
   return response.body;
 });

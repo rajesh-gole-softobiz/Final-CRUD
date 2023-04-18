@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Grid, Paper, Button, Typography, TextField } from "@mui/material";
+import {
+  Grid,
+  Paper,
+  Button,
+  Typography,
+  TextField,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+} from "@mui/material";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +17,11 @@ import { useNavigate, useParams } from "react-router-dom";
 // import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 import axios from "axios";
-import { AppDispatch, RootState } from "../../redux/configureStore";
+import {
+  AppDispatch,
+  RootState,
+  useAppDispatch,
+} from "../../redux/configureStore";
 import { editUser } from "../../redux/modules/users";
 
 const UserEdit = () => {
@@ -23,6 +36,8 @@ const UserEdit = () => {
     id: "",
     name: "",
     email: "",
+    age: "",
+    gender: "",
     description: "",
   });
   useEffect(() => {
@@ -37,6 +52,8 @@ const UserEdit = () => {
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(3, "It's too short").required("Required"),
     // email: Yup.string().email("Enter valid email").required("Required"),
+    age: Yup.number().min(1).max(150).required("Age Required"),
+    gender: Yup.string().required("Choose any option"),
     description: Yup.string().min(2).required("Required"),
   });
   //   const numberofUsers = useSelector((state:RootState) => state.users.users.length);
@@ -46,6 +63,7 @@ const UserEdit = () => {
     setIntialvalues(values);
     console.log("values", values);
     dispatch(editUser({ values, id }));
+    alert("Users updated successfully");
     navigate("/all-users");
   };
 
@@ -89,6 +107,44 @@ const UserEdit = () => {
                   setFieldValue(e.target.name, e.target.value);
                 }}
               />
+
+              <Field
+                as={TextField}
+                name="age"
+                label="Age"
+                fullWidth
+                error={errors.age && touched.age}
+                helperText={<ErrorMessage name="age" />}
+                required
+                onChange={(e: any) => {
+                  setFieldValue(e.target.name, e.target.value);
+                }}
+              />
+
+              <Field
+                as={RadioGroup}
+                name="gender"
+                label="Gender"
+                error={errors.gender && touched.gender}
+                // helperText={<ErrorMessage name="gender" />}
+                required
+              >
+                <FormControlLabel
+                  value="female"
+                  control={<Radio />}
+                  label="Female"
+                />
+                <FormControlLabel
+                  value="male"
+                  control={<Radio />}
+                  label="Male"
+                />
+                <FormControlLabel
+                  value="other"
+                  control={<Radio />}
+                  label="Other"
+                />
+              </Field>
 
               <Field
                 as={TextField}
