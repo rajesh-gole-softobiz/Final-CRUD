@@ -64,7 +64,7 @@ const UserEdit = () => {
     console.log("values", values);
     dispatch(editUser({ values, id }));
     alert("Users updated successfully");
-    navigate("/all-users");
+    navigate(`/user/${id}`);
   };
 
   return (

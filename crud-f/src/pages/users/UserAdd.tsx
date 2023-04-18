@@ -36,7 +36,7 @@ const UserAdd = () => {
     age: "",
     gender: "",
     description: "",
-    checkbox: "",
+    // checkbox: "",
   });
   const validationSchema = Yup.object().shape({
     name: Yup.string().min(3, "It's too short").required("Required"),
@@ -44,7 +44,7 @@ const UserAdd = () => {
     age: Yup.number().min(1).max(150).required("Age Required"),
     gender: Yup.string().required("Choose any option"),
     description: Yup.string().required("Description is Required"),
-    checkbox: Yup.boolean().oneOf([true], "Please accept before submit"),
+    // checkbox: Yup.boolean().oneOf([true], "Please accept before submit"),
   });
   //   const numberofUsers = useSelector((state:RootState) => state.users.users.length);
   //   console.log("numberofUsers", numberofUsers);
@@ -57,13 +57,13 @@ const UserAdd = () => {
     const age = values.age;
     const gender = values.gender;
     const description = values.description;
-    const checkbox = values.checkbox;
+    // const checkbox = values.checkbox;
 
-    const user = { id, name, email, age, gender, description, checkbox };
+    const user = { id, name, email, age, gender, description };
 
     dispatch(addUser(user));
     alert("New User Added");
-    navigate("/all-users");
+    navigate(`/user/${id}`);
   };
   console.log("initialValues", initialValues);
   return (
@@ -148,14 +148,14 @@ const UserAdd = () => {
                 helperText={<ErrorMessage name="description" />}
                 required
               />
-              <Field
+              {/* <Field
                 type="checkbox"
                 name="checkbox"
                 label="Accept"
                 error={errors.checkbox && touched.checkbox}
                 helperText={<ErrorMessage name="checkbox" />}
                 required
-              />
+              /> */}
 
               <Button
                 type="submit"

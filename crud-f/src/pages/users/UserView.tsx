@@ -81,7 +81,7 @@ const UserView = () => {
   const handleDeleteUser = (id: any) => {
     dispatch(deleteUser(id));
     alert("User Deleted");
-    navigate("/all-users");
+    navigate("/");
   };
   const totalPages = Math.ceil(rows.length / pageSize);
   let copyData = rows.slice((page - 1) * pageSize, page * pageSize);
@@ -161,7 +161,7 @@ const UserView = () => {
                       <Button
                         variant="contained"
                         component={Link}
-                        to={`/all-users`}
+                        to={`/`}
                         color="error"
                         onClick={() => {
                           handleDeleteUser(user["id"]);

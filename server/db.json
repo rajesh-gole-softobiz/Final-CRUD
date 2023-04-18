@@ -1,16 +1,6 @@
 {
   "users": [
     {
-      "id": "9b092bdf-9be1-4b4f-bde2-0158237f54ea",
-      "name": "Akshay1",
-      "email": "akshay@gmail.com",
-      "phone": "9956782200",
-      "createdAt": "Friday, April 14th 2023, 5:55:43 pm",
-      "description": "hi akshay",
-      "age": "22",
-      "gender": "male"
-    },
-    {
       "id": "7e63bc8d-c722-450e-855a-c62abf349faf",
       "name": "Rajesh2",
       "email": "rajesh.gole@softobiz.com",
@@ -31,16 +21,6 @@
       "description": "ijhgbv"
     },
     {
-      "id": "06f501ff-b1da-46ce-9d76-55f430457f15",
-      "name": "demo1",
-      "email": "demo1@gmail.com",
-      "phone": "9207823611",
-      "createdAt": "Friday, April 14th 2023, 5:57:15 pm",
-      "age": "48",
-      "gender": "female",
-      "description": "ftgfgfgh"
-    },
-    {
       "id": "66b63342-4e3c-4c11-b7b3-b7694efbd840",
       "name": "demo2",
       "email": "demo2@gmail.com",
@@ -48,7 +28,7 @@
       "createdAt": "Friday, April 14th 2023, 5:57:37 pm",
       "age": "25",
       "gender": "female",
-      "description": "ytytyt"
+      "description": "best of luck d2"
     },
     {
       "id": "87912184-c6dd-41d9-9a0c-3c6d2ff9c9c5",
@@ -58,7 +38,7 @@
       "createdAt": "Friday, April 14th 2023, 5:58:12 pm",
       "age": "26",
       "gender": "female",
-      "description": "jkhjjhjg"
+      "description": "jkhjjhjgkk"
     },
     {
       "id": "kDBQJY0",
@@ -112,32 +92,6 @@
       "age": "23",
       "gender": "male",
       "description": "This is javascript logo"
-    },
-    {
-      "id": "899c5c24-5baf-4567-b60d-0c201b279dc9",
-      "name": "demo99",
-      "email": "demo99@gmail.com",
-      "age": "27",
-      "gender": "male",
-      "description": "hey"
-    },
-    {
-      "id": "e04d9fed-0f7e-419c-9519-9bf8afd84a5f",
-      "name": "demo19",
-      "email": "demo19@gmail.com",
-      "age": "19",
-      "gender": "male",
-      "description": "hello1",
-      "checkbox": ""
-    },
-    {
-      "id": "6345ea07-1332-4257-82a6-501d58de24b1",
-      "name": "demo20",
-      "email": "demo20@gmail.com",
-      "age": "30",
-      "gender": "male",
-      "description": "yttygm",
-      "checkbox": true
     }
   ]
 }
