@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "this project is done by rajesh-gole",
+  "main": "index.tsx",
+  "scripts": {
+    "start": "json-server -p 3009 -w db.json"
+  },
+  "author": "RAJESH GOLE",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^0.17.3"
+  }
+}
