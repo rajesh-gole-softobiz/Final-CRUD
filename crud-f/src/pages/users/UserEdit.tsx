@@ -101,7 +101,6 @@ const UserEdit = () => {
                   setFieldValue(e.target.name, e.target.value);
                 }}
               />
-
               <Field
                 as={TextField}
                 name="email"
@@ -114,7 +113,6 @@ const UserEdit = () => {
                   setFieldValue(e.target.name, e.target.value);
                 }}
               />
-
               <Field
                 as={TextField}
                 name="age"
@@ -127,7 +125,6 @@ const UserEdit = () => {
                   setFieldValue(e.target.name, e.target.value);
                 }}
               />
-
               <Field
                 as={RadioGroup}
                 name="gender"
@@ -152,7 +149,6 @@ const UserEdit = () => {
                   label="Other"
                 />
               </Field>
-
               <Field
                 as={TextField}
                 name="description"
@@ -171,8 +167,8 @@ const UserEdit = () => {
                 to={`/user/hobby/${id}`}
               >
                 Hobbies
-              </Button>
-
+              </Button>{" "}
+              <h3>{hobby.join(",")}</h3>
               <Button
                 type="submit"
                 style={btnStyle}

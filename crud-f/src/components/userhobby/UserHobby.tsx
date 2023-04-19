@@ -4,8 +4,11 @@ import * as Yup from "yup";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Button from "@mui/material/Button";
+import { useAppDispatch } from "../../redux/configureStore";
+import { addHobby } from "../../redux/modules/users";
 
 const UserHobby = ({ onSubmit }: any) => {
+  const dispatch = useAppDispatch();
   const [hobbies, setHobbies] = useState([]);
 
   const formik = useFormik({
@@ -17,6 +20,7 @@ const UserHobby = ({ onSubmit }: any) => {
     }),
     onSubmit: (values) => {
       setHobbies(values.hobbies);
+      dispatch(addHobby(values.hobbies));
       onSubmit(values.hobbies);
     },
   });
