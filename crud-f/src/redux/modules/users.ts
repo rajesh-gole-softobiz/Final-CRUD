@@ -37,18 +37,24 @@ export const editUser = createAsyncThunk("users/editUser", async (data:any)=>{
 export interface IState {
   users: [],
   loading: boolean,
-  error: string | null
+  error: string | null,
+  hobby: []
 }
 const initialUsers:IState = {
     users: [],
     loading: false,
-    error: null
+    error: null,
+    hobby: []
 };
 
 export const usersSlice = createSlice({
   name: "users",
   initialState: initialUsers,
-  reducers: {},
+  reducers: {
+    addHobby: (state, action) => {
+      state.hobby = action.payload
+    }
+  },
   extraReducers: (builder:any) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(fetchUsers.pending, (state:any, action:any) => {
@@ -66,5 +72,5 @@ export const usersSlice = createSlice({
   },
 });
 
-// export const { showUsers, addUser, deleteUser } = usersSlice.actions;
+export const { addHobby } = usersSlice.actions;
 export default usersSlice.reducer;

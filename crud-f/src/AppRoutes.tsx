@@ -9,6 +9,7 @@ import Login from "./pages/login/Login";
 import Error from "./pages/error";
 import ProtectedRoutes from "./protectedRoute/ProtectedRoutes";
 import UserInfo from "./components/userinfo/UserInfo";
+import UserHobby from "./components/userhobby/UserHobby";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
         <Route path="/edituser/:id" element={<UserEdit />} />
         <Route path="/adduser" element={<UserAdd />} />
         <Route path="/user/:id" element={<UserInfo />} />
+        <Route path="/user/hobby/:id" element={<UserHobby />} />
         <Route path="*" element={<Error />} />
       </Route>
     </Routes>

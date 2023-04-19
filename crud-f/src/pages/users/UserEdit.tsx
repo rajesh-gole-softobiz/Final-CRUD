@@ -13,7 +13,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 // import { addUser } from "../../redux/UserSlice";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 // import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 import axios from "axios";
@@ -31,6 +31,11 @@ const UserEdit = () => {
 
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+
+  const { hobby } = useSelector((state: RootState) => ({
+    hobby: state.users.hobby,
+  }));
+
   const { id } = useParams();
   const [initialValues, setIntialvalues] = useState({
     id: "",
@@ -60,12 +65,14 @@ const UserEdit = () => {
   //   console.log("numberofUsers", numberofUsers);
 
   const onSubmit = (values: any) => {
+    values.hobbies = hobby;
     setIntialvalues(values);
     console.log("values", values);
     dispatch(editUser({ values, id }));
     alert("Users updated successfully");
     navigate(`/user/${id}`);
   };
+  console.log("hobby", hobby);
 
   return (
     <Grid>
@@ -158,6 +165,13 @@ const UserEdit = () => {
                   setFieldValue(e.target.name, e.target.value);
                 }}
               />
+              <Button
+                variant="outlined"
+                component={Link}
+                to={`/user/hobby/${id}`}
+              >
+                Hobbies
+              </Button>
 
               <Button
                 type="submit"
